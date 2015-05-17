@@ -616,11 +616,7 @@ x%/%y  # x除以y的商數
 <br>
 <br>
 <br>
-<<<<<<< HEAD
 - formula相當於對模型的描述，基本的表示方法為y ~ x，x 和 y 分別為不同的向量變數，以 ~ 隔開，描述 **y (output) 與 x (input) 的關係**，例如觀察：濕度 (y) 相對於降雨量 (x) 的變化。
-=======
-- formula相當於對模型的描述，基本的表示方法為y~x，x和y分別為不同的向量變數，以~隔開，而y~x可想成**觀察變數y相對於變數x的變化**。例如：觀察濕度相對於降雨量的變化。
->>>>>>> origin/master
 
 *** =right
 
@@ -699,11 +695,7 @@ plot(pressure ~ temp, ubike)
 ---
 ## 列表觀察類別型數據
 <!-- html table generated in R 2.15.3 by xtable 1.7-1 package -->
-<<<<<<< HEAD
 <!-- Sat May 16 22:07:03 2015 -->
-=======
-<!-- Sat May 16 21:15:29 2015 -->
->>>>>>> origin/master
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 房價 </TH> <TH> 信義區 </TH> <TH> 大安區 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 25% </TD> <TD align="right"> 12.50 </TD> <TD align="right"> 14.80 </TD> </TR>
