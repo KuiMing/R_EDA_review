@@ -64,9 +64,9 @@ class(z)
 ## [1] "logical"
 ```
 
---- &twocol
+--- &twocol .largecontent
 ## 向量元素的命名
-在 R 語言中，可以對向量中的每一個元素命名，或者是利用函數 names 對向量元素命名，這有助於該向量的理解。
+- 在 R 語言中，可以對向量中的每一個元素命名，或者是利用函數 names 對向量元素命名，這有助於該向量的理解。
 
 *** =left
 
@@ -106,7 +106,7 @@ names(y1)
 
 --- &radio
 
-## 練習
+## 練習命名
 
 如何以y對z命名？
 
@@ -124,10 +124,10 @@ names
 names(z)<-y
 z
 
----
+--- .largecontent
 ## factor物件簡介
 
-當一向量變數是類別型變數 (categorical data，譬如：性別、教育水準) 時，在R語言中以factor進行定義。
+- 當一向量變數是類別型變數 (categorical data，譬如：性別、教育水準) 時，在R語言中以factor進行定義。
 
 ```r
 # 產生2個'male'和3個'female'
@@ -193,7 +193,7 @@ gender  # 改變了level的順序，也改變了label名稱
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
 
----
+--- &radio
 ## 練習factor
 
 請將city以以下的順序為level的順序設為factor物件
@@ -293,9 +293,9 @@ x[x > 3]  # simplify expression
 ```
 
 
----
+--- .largecontent
 ## data.frame 物件簡介
-資料表 (data.frame) 是向量 (vector) 的一種推廣，它可以將多個相同長度 (不一定是相同類別) 的向量合併在一起 (combine by column)。
+- 資料表 (data.frame) 是向量 (vector) 的一種推廣，它可以將多個相同長度 (不一定是相同類別) 的向量合併在一起 (combine by column)。
 
 ```r
 x <- c(4.39, 2.11, 3.17)
@@ -344,9 +344,9 @@ rownames(df)  # 展示物件的列名稱
 ```
 
 
---- &twocol
+--- &twocol .largecontent
 ## data.frame的取值
-利用[,] 提取物件內容，基本表達式為x[i, j]，表示x物件中第i列 (ith row)、第j行 (jth column) 的值，也可用x[i, ]表達第i列的向量；x[,j]表達第j行的向量。
+- 利用[,] 提取物件內容，基本表達式為x[i, j]，表示x物件中第i列 (ith row)、第j行 (jth column) 的值，也可用x[i, ]表達第i列的向量；x[,j]表達第j行的向量。
 *** =left
 
 ```r
@@ -393,7 +393,7 @@ df[["v1"]]
 ```
 
 
----
+--- &radio
 ## 練習取值
 
 請取出df第三列，第二行的數值
@@ -415,9 +415,9 @@ df[3,2]
 df$v2[3]
 df[["v2"]][3]
 
----
+--- .largecontent
 ## data.frame的取值
-可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
+- 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
 
 ```r
 df[2, ]  # select 2nd row
@@ -438,9 +438,9 @@ df[df$v1 > 3 & z == TRUE, "v2"]
 ```
 
 
----
+--- .largecontent
 ## data.frame的合併
-利用rbind (上下合併)、cbind (左右合併) 對data.frame進行合併
+- 利用rbind (上下合併)、cbind (左右合併) 對data.frame進行合併
 
 ```r
 x <- data.frame(Drama = c("我的自由年代", "回到愛以前"), TV = c("三立", 
@@ -614,7 +614,7 @@ x%/%y  # x除以y的商數
 <br>
 <br>
 <br>
-formula相當於對模型的描述，基本的表示方法為y~x，x和y分別為不同的向量變數，以~隔開，而y~x可想成**觀察變數y相對於變數x的變化**。例如：觀察濕度相對於降雨量的變化。
+- formula相當於對模型的描述，基本的表示方法為y~x，x和y分別為不同的向量變數，以~隔開，而y~x可想成**觀察變數y相對於變數x的變化**。例如：觀察濕度相對於降雨量的變化。
 
 *** =right
 
@@ -628,7 +628,7 @@ plot(humidity ~ rainfall, ubike)
 --- &vcenter .largecontent
 ## 練習Formula
 
-觀察氣壓相對於溫度的變化。
+- 觀察氣壓相對於溫度的變化。
 
 ![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-30.png) 
 
@@ -646,7 +646,8 @@ plot(pressure ~ temp, ubike)
 --- &vcenter .largecontent
 ## formula
 
-有時待觀察的變數可能被不只一個變數影響，而這些變數之間也有可能會相互影響，模型的描述就會比較複雜
+### 有時待觀察的變數可能被不只一個變數影響，而這些變數之間也有可能會相互影響，模型的描述就會比較複雜。
+
 
 
     y~x+w+z     # 觀察y相對於x, w, z的變化
@@ -692,7 +693,7 @@ plot(pressure ~ temp, ubike)
 ---
 ## 列表觀察類別型數據
 <!-- html table generated in R 2.15.3 by xtable 1.7-1 package -->
-<!-- Sat May 16 20:41:56 2015 -->
+<!-- Sat May 16 21:15:29 2015 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 房價 </TH> <TH> 信義區 </TH> <TH> 大安區 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 25% </TD> <TD align="right"> 12.50 </TD> <TD align="right"> 14.80 </TD> </TR>
