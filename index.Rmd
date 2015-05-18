@@ -1,19 +1,17 @@
 ---
 title       : R basic and EDA Review
 subtitle    : 智庫驅動
-author      : Ben Chen
+author      : 陳奎銘 (Ben Chen)
 job         : 
 framework   : io2012-dsp
-highlighter : highlight.js
-hitheme     : zenburn
-widgets     : [quiz, bootstrap]           # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : zenburn      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained
 knit        : slidify::knit2slides
+
 --- .dark .segue
-
 ## R basic
-
-
 
 --- .largecontent
 ## 變數賦值
@@ -22,9 +20,13 @@ library(ggplot2)
 library(magrittr)
 library(xtable)
 library(quantmod)
-thm <- theme(text=element_text(size=20))
+thm <- function() {
+  theme_gray(base_family = "STHeiti") + 
+  theme(text=element_text(size=20))
+}  # Mac user
+# thm <- theme(text=element_text(size=20))  # Windows user
 las2 <- theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ubike <- read.csv('ubikeweatherutf8.csv',nrow=100)
+ubike <- read.csv('ubikeweatherutf8.csv', nrow=100)
 ```
 1. 變數的賦值方式： <- (箭號) 以及 = (等號)， 建議使用 <- 。
 2. 註解以 # (井號) 表示。
@@ -54,6 +56,7 @@ class(y)
 z <- c(TRUE,FALSE,TRUE)
 class(z)
 ```
+
 --- &twocol .largecontent
 ## 向量元素的命名
 - 在 R 語言中，可以對向量中的每一個元素命名，或者是利用函數 names 對向量元素命名，這有助於該向量的理解。
@@ -73,7 +76,7 @@ y1
 names(y1)
 ```
 
---- &radio
+--- 
 
 ## 練習命名
 
@@ -118,6 +121,7 @@ as.numeric(gender)
 ```{r,echo=FALSE}
 plot(gender,cex.names=2)
 ```
+
 --- &vcenter .largecontent
 # Change vector of labels for the levels
 
@@ -128,7 +132,8 @@ gender # 改變了level的順序，也改變了label名稱
 ```{r,echo=FALSE,fig.height=5.5}
 plot(gender,cex.names=2)
 ```
---- &radio
+
+--- 
 ## 練習factor
 
 請將city改為factor的向量變數，並將level以city目前的順序設定。
@@ -170,6 +175,7 @@ ubike <- read.table(path, sep = ",", header = TRUE,
 ubike <- read.csv(path)
 
 ```
+
 --- &twocol
 ## 取值
 *** =left
@@ -197,6 +203,7 @@ z <- c(TRUE, FALSE, TRUE)
 df <- data.frame(v1 = x, v2 = y, v3 = z)
 df
 ```
+
 ---
 ## data.frame 物件簡介
 
@@ -226,7 +233,7 @@ df[["v1"]]
 df$v1
 ```
 
---- &radio
+--- 
 ## 練習取值
 
 請取出df第三列，第二行的數值
@@ -272,6 +279,7 @@ z <- data.frame(Drama=c("16個夏天", "妹妹"),
                 Rating=c(2.30, 1.30))
 
 ```
+
 --- &twocol
 ## data.frame的合併
 *** =left
@@ -284,6 +292,7 @@ y
 xy <- cbind(x, y)
 xy
 ```
+
 ---
 ## data.frame的合併
 ```{r}
@@ -378,7 +387,7 @@ plot(pressure~temp,ubike)
 
 
 
---- &radio
+--- 
 
 ## 練習Formula
 
@@ -418,13 +427,15 @@ data.frame(房價 = c("25%", "50%", "75%", "平均"),
            大安區 = c(14.8, 23.4, 37.4, 31.5)) %>%
   xtable %>% print.xtable(rotate.rownames = FALSE, type = "html")
 ```
+
 --- &vcenter
 ## Barplot觀察類別與數值
-```{r,echo=FALSE,warning=FALSE}
+```{r,echo=FALSE,warning=FALSE, fig.width=12}
 ubike <- read.csv('ubikeweatherutf8.csv',nrow=10000)
 ubike1=ubike[ubike$date=='2014-12-09' & ubike$sarea=='永和區' & ubike$hour==15,c("sna","max.anemo")]
-ggplot(ubike1)+geom_bar(aes(x=sna,y=max.anemo,fill = sna), stat="identity")+ las2+
-  ylab('最大風速')+theme(text=element_text(size=20),legend.position="none")
+ggplot(ubike1)+geom_bar(aes(x=sna,y=max.anemo,fill = sna), stat="identity")+
+  las2+ylab('最大風速')+theme(text=element_text(size=20),legend.position="none")+
+  thm()+coord_flip()
 ```
 
 --- &vcenter
@@ -433,14 +444,14 @@ ggplot(ubike1)+geom_bar(aes(x=sna,y=max.anemo,fill = sna), stat="identity")+ las
 
 ubike1=ubike[ubike$date=='2014-12-09',c("hour","temp")]
 ubike1$hour=factor(ubike1$hour)
-ggplot(ubike1,aes(x=hour,y=temp))+geom_boxplot()+thm
+ggplot(ubike1,aes(x=hour,y=temp))+geom_boxplot()+thm()
 ```
 
 --- &vcenter
 ## Density plot觀察單一數據的分布情形
 ```{r,echo=FALSE}
 data.frame(x = rnorm(100, 0, 1)) %>% ggplot(aes(x = x)) +
-    geom_density() + thm
+    geom_density() + thm()
 ```
 
 
@@ -452,14 +463,14 @@ data.frame(x = rnorm(100, 0, 1)) %>% ggplot(aes(x = x)) +
 
 ```{r cars1, warning=FALSE,echo=FALSE}
 ggplot(cars, aes(x = speed, y = dist)) +
-  geom_point()+thm 
+  geom_point()+thm() 
 ```
 *** =right
 ```{r , warning=FALSE,echo=FALSE}
 ggplot(cars, aes(x = speed, y = dist)) +
   geom_point() +
   geom_smooth(method = lm, se = TRUE) +
-  thm+ggtitle('加上趨勢線')
+  ggtitle('加上趨勢線') + thm()
 ```
 
 --- &vcenter
@@ -469,7 +480,7 @@ ggplot(cars, aes(x = speed, y = dist)) +
 load('USDTWD.RData')
 x=as.data.frame(USDTWD)
 x=data.frame(date=as.Date(rownames(x)),USDTWD=as.numeric(x$USD.TWD))
-ggplot(x)+geom_line(aes(date,USDTWD))+thm
+ggplot(x)+geom_line(aes(date,USDTWD))+thm()
 ```
 
 --- .largecontent

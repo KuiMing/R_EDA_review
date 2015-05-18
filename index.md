@@ -1,23 +1,20 @@
 ---
 title       : R basic and EDA Review
 subtitle    : 智庫驅動
-author      : Ben Chen
+author      : 陳奎銘 (Ben Chen)
 job         : 
 framework   : io2012-dsp
-highlighter : highlight.js
-hitheme     : zenburn
-widgets     : [quiz, bootstrap]           # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : zenburn      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained
 knit        : slidify::knit2slides
+
 --- .dark .segue
-
 ## R basic
-
-
 
 --- .largecontent
 ## 變數賦值
-
 
 1. 變數的賦值方式： <- (箭號) 以及 = (等號)， 建議使用 <- 。
 2. 註解以 # (井號) 表示。
@@ -32,14 +29,13 @@ knit        : slidify::knit2slides
 
 ```r
 # Numeric，class(x)查詢物件的類別
-x <- c(1.1, 2.2, 5.23)
+x <- c(1.1,2.2,5.23)
 class(x)
 ```
 
 ```
 ## [1] "numeric"
 ```
-
 
 
 ```r
@@ -51,12 +47,11 @@ class(y)
 ```
 ## [1] "character"
 ```
-
 *** =right
 
 ```r
 # logical
-z <- c(TRUE, FALSE, TRUE)
+z <- c(TRUE,FALSE,TRUE)
 class(z)
 ```
 
@@ -72,7 +67,7 @@ class(z)
 
 ```r
 y <- c("apple", "book", "cat")
-y1 <- c(A = "apple", B = "book", C = "cat")
+y1<-c(A="apple",B="book",C="cat")
 y1
 ```
 
@@ -80,7 +75,6 @@ y1
       A       B       C 
 "apple"  "book"   "cat" 
 ```
-
 
 *** =right
 
@@ -103,8 +97,7 @@ names(y1)
 ## [1] "A" "B" "C"
 ```
 
-
---- &radio
+--- 
 
 ## 練習命名
 
@@ -131,8 +124,8 @@ z
 - 當一向量變數是類別型變數 (categorical data，譬如：性別、教育水準) 時，在R語言中以factor進行定義。
 
 ```r
-# 產生2個'male'和3個'female'
-gender <- c(rep("male", 2), rep("female", 3))  #rep: 複製value
+# 產生2個"male"和3個"female" 
+gender <- c(rep("male",2), rep("female", 3)) #rep: 複製value
 gender
 ```
 
@@ -141,7 +134,7 @@ gender
 ```
 
 ```r
-gender <- factor(gender)  #利用factor將字串變成factor
+gender <- factor(gender) #利用factor將字串變成factor
 gender
 ```
 
@@ -149,7 +142,6 @@ gender
 ## [1] male   male   female female female
 ## Levels: female male
 ```
-
 
 --- &twocol
 ## Level的順序
@@ -164,7 +156,7 @@ levels(gender)
 ```
 
 ```r
-as.numeric(gender)
+as.numeric(gender) 
 ```
 
 ```
@@ -174,27 +166,25 @@ as.numeric(gender)
 ```r
 # 1=female, 2=male 依字母順序排列
 ```
-
 *** =right
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png) 
 
 --- &vcenter .largecontent
 # Change vector of labels for the levels
 
 
 ```r
-gender <- factor(gender, levels = c("male", "female"), labels = c("M", "F"))
-gender  # 改變了level的順序，也改變了label名稱
+gender<-factor(gender, levels=c("male", "female"), labels=c("M", "F"))
+gender # 改變了level的順序，也改變了label名稱
 ```
 
 ```
 ## [1] M M F F F
 ## Levels: M F
 ```
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png) 
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
-
---- &radio
+--- 
 ## 練習factor
 
 請將city改為factor的向量變數，並將level以city目前的順序設定。
@@ -235,7 +225,6 @@ ubike <- read.table(path, sep = ",", header = TRUE,
 
 # read.csv可以直接讀取csv檔，自動以逗號分隔，並以第一列為欄位名稱
 ubike <- read.csv(path)
-
 ```
 
 --- &twocol
@@ -244,7 +233,7 @@ ubike <- read.csv(path)
 
 ```r
 x <- c(4.39, 2.11, 3.17)
-x[c(1, 3)]  # 選擇第1和3個元素 
+x[c(1,3)] # 選擇第1和3個元素 
 ```
 
 ```
@@ -252,18 +241,17 @@ x[c(1, 3)]  # 選擇第1和3個元素
 ```
 
 ```r
-x[-1]  # 移除第1個元素
+x[-1] # 移除第1個元素
 ```
 
 ```
 ## [1] 2.11 3.17
 ```
 
-
 *** =right
 
 ```r
-x > 3  # 判斷x中的元素是否大於3
+x>3 # 判斷x中的元素是否大於3
 ```
 
 ```
@@ -271,7 +259,7 @@ x > 3  # 判斷x中的元素是否大於3
 ```
 
 ```r
-which(x > 3)  # x中哪個元素大於3
+which(x>3) # x中哪個元素大於3
 ```
 
 ```
@@ -279,7 +267,7 @@ which(x > 3)  # x中哪個元素大於3
 ```
 
 ```r
-x[which(x > 3)]  # 選出x中大於3的元素
+x[which(x>3)] # 選出x中大於3的元素
 ```
 
 ```
@@ -287,13 +275,12 @@ x[which(x > 3)]  # 選出x中大於3的元素
 ```
 
 ```r
-x[x > 3]  # simplify expression
+x[x>3] # simplify expression
 ```
 
 ```
 ## [1] 4.39 3.17
 ```
-
 
 --- .largecontent
 ## data.frame 物件簡介
@@ -319,7 +306,7 @@ df
 
 
 ```r
-str(df)  # 展示物件各欄位的屬性結構
+str(df) # 展示物件各欄位的屬性結構
 ```
 
 ```
@@ -330,7 +317,7 @@ str(df)  # 展示物件各欄位的屬性結構
 ```
 
 ```r
-colnames(df)  # 展示物件的欄位名稱
+colnames(df) # 展示物件的欄位名稱
 ```
 
 ```
@@ -338,13 +325,12 @@ colnames(df)  # 展示物件的欄位名稱
 ```
 
 ```r
-rownames(df)  # 展示物件的列名稱
+rownames(df) # 展示物件的列名稱
 ```
 
 ```
 ## [1] "1" "2" "3"
 ```
-
 
 --- &twocol .largecontent
 ## data.frame的取值
@@ -352,7 +338,7 @@ rownames(df)  # 展示物件的列名稱
 *** =left
 
 ```r
-df[1]  # 選擇第一欄
+df[1] # 選擇第一欄
 ```
 
 ```
@@ -363,17 +349,16 @@ df[1]  # 選擇第一欄
 ```
 
 ```r
-df[, 1]  # 選擇第一欄的數值
+df[, 1] # 選擇第一欄的數值
 ```
 
 ```
 ## [1] 4.39 2.11 3.17
 ```
-
 *** =right
 
 ```r
-df["v1"]  # 選擇第一欄
+df["v1"]# 選擇第一欄
 ```
 
 ```
@@ -383,19 +368,16 @@ df["v1"]  # 選擇第一欄
 ## 3 3.17
 ```
 
-
 ```r
-df$v1  # 選擇第一欄的數值
-df[["v1"]]
+df$v1 # 選擇第一欄的數值
+df[["v1"]] 
 ```
-
 
 ```
 ## [1] 4.39 2.11 3.17
 ```
 
-
---- &radio
+--- 
 ## 練習取值
 
 請取出df第三列，第二行的數值
@@ -422,7 +404,7 @@ df[["v2"]][3]
 - 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
 
 ```r
-df[2, ]  # select 2nd row
+df[2, ] # select 2nd row
 ```
 
 ```
@@ -431,7 +413,7 @@ df[2, ]  # select 2nd row
 ```
 
 ```r
-df[df$v1 > 3 & z == TRUE, "v2"]
+df[df$v1 > 3 & z==TRUE, "v2"]
 ```
 
 ```
@@ -439,19 +421,21 @@ df[df$v1 > 3 & z == TRUE, "v2"]
 ## Levels: apple book cat
 ```
 
-
 --- .largecontent
 ## data.frame的合併
 - 利用rbind (上下合併)、cbind (左右合併) 對data.frame進行合併
 
 ```r
-x <- data.frame(Drama = c("我的自由年代", "回到愛以前"), TV = c("三立", 
-    "台視"))
+x <- data.frame(Drama=c("我的自由年代", "回到愛以前"), 
+                TV=c("三立", "台視"))
 
-y <- data.frame(Vol = c(12, 13), Rating = c(2.67, 2.58))
+y <- data.frame(Vol=c(12, 13),
+                Rating=c(2.67, 2.58))
 
-z <- data.frame(Drama = c("16個夏天", "妹妹"), TV = c("公視", "台視"), 
-    Vol = c(16, 7), Rating = c(2.3, 1.3))
+z <- data.frame(Drama=c("16個夏天", "妹妹"), 
+                TV=c("公視", "台視"),
+                Vol=c(16, 7),
+                Rating=c(2.30, 1.30))
 ```
 
 --- &twocol
@@ -477,7 +461,6 @@ y
 ## 1  12   2.67
 ## 2  13   2.58
 ```
-
 *** =right
 
 ```r
@@ -520,15 +503,13 @@ rbind(xy, z)
 # 壓縮程式碼 rbind(cbind(x, y),z)
 ```
 
-
 --- &twocol
 ## Arithmetic Operator
 *** =left
 
 
-
 ```r
-x + y  # x=50;y=3
+x+y # x=50;y=3
 ```
 
 ```
@@ -536,7 +517,7 @@ x + y  # x=50;y=3
 ```
 
 ```r
-x - y
+x-y
 ```
 
 ```
@@ -544,7 +525,7 @@ x - y
 ```
 
 ```r
-x * y
+x*y
 ```
 
 ```
@@ -552,25 +533,24 @@ x * y
 ```
 
 ```r
-x^y  # x的y次方
+x^y # x的y次方
 ```
 
 ```
 ## [1] 125000
 ```
-
 *** =right
 
 ```r
-x/y  # x除以y
+x/y # x除以y
 ```
 
 ```
-## [1] 16.67
+## [1] 16.66667
 ```
 
 ```r
-x%%y  # x除以y的餘數
+x %% y # x除以y的餘數
 ```
 
 ```
@@ -578,13 +558,12 @@ x%%y  # x除以y的餘數
 ```
 
 ```r
-x%/%y  # x除以y的商數
+x %/% y # x除以y的商數
 ```
 
 ```
 ## [1] 16
 ```
-
 
 ---
 ## Logical Operator
@@ -621,29 +600,26 @@ x%/%y  # x除以y的商數
 *** =right
 
 ```r
-plot(humidity ~ rainfall, ubike)
+plot(humidity~rainfall,ubike)
 ```
 
-![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29.png) 
-
+![plot of chunk unnamed-chunk-29](assets/fig/unnamed-chunk-29-1.png) 
 
 --- &vcenter .largecontent
 ## 練習Formula
 
 - 觀察氣壓相對於溫度的變化。
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-30.png) 
-
+![plot of chunk unnamed-chunk-30](assets/fig/unnamed-chunk-30-1.png) 
 
 --- &vcenter .largecontent
 ## 練習Formula-Answer
 
 ```r
-plot(pressure ~ temp, ubike)
+plot(pressure~temp,ubike)
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-31.png) 
-
+![plot of chunk unnamed-chunk-31](assets/fig/unnamed-chunk-31-1.png) 
 
 --- &vcenter .largecontent
 ## formula
@@ -660,7 +636,7 @@ plot(pressure ~ temp, ubike)
 
 
 
---- &radio
+--- 
 
 ## 練習Formula
 
@@ -694,8 +670,8 @@ plot(pressure ~ temp, ubike)
 
 ---
 ## 列表觀察類別型數據
-<!-- html table generated in R 2.15.3 by xtable 1.7-1 package -->
-<!-- Sat May 16 22:07:03 2015 -->
+<!-- html table generated in R 3.1.3 by xtable 1.7-3 package -->
+<!-- Mon May 18 21:31:12 2015 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 房價 </TH> <TH> 信義區 </TH> <TH> 大安區 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 25% </TD> <TD align="right"> 12.50 </TD> <TD align="right"> 14.80 </TD> </TR>
@@ -706,18 +682,15 @@ plot(pressure ~ temp, ubike)
 
 --- &vcenter
 ## Barplot觀察類別與數值
-![plot of chunk unnamed-chunk-33](figure/unnamed-chunk-33.png) 
-
+![plot of chunk unnamed-chunk-33](assets/fig/unnamed-chunk-33-1.png) 
 
 --- &vcenter
 ## Boxplot觀察不同類別數據分布
-![plot of chunk unnamed-chunk-34](figure/unnamed-chunk-34.png) 
-
+![plot of chunk unnamed-chunk-34](assets/fig/unnamed-chunk-34-1.png) 
 
 --- &vcenter
 ## Density plot觀察單一數據的分布情形
-![plot of chunk unnamed-chunk-35](figure/unnamed-chunk-35.png) 
-
+![plot of chunk unnamed-chunk-35](assets/fig/unnamed-chunk-35-1.png) 
 
 
 --- &twocol .largecontent
@@ -726,17 +699,14 @@ plot(pressure ~ temp, ubike)
 
 *** =left
 
-![plot of chunk cars1](figure/cars1.png) 
-
+![plot of chunk cars1](assets/fig/cars1-1.png) 
 *** =right
-![plot of chunk unnamed-chunk-36](figure/unnamed-chunk-36.png) 
-
+![plot of chunk unnamed-chunk-36](assets/fig/unnamed-chunk-36-1.png) 
 
 --- &vcenter
 ## 觀察時間與數據之間的關係
 
-![plot of chunk unnamed-chunk-37](figure/unnamed-chunk-37.png) 
-
+![plot of chunk unnamed-chunk-37](assets/fig/unnamed-chunk-37-1.png) 
 
 --- .largecontent
 ## 總結

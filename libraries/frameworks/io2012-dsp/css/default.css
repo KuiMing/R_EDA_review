@@ -1501,3 +1501,7 @@ aside.gdbar img {
     font-family: monospace !important;
   }
 }
+
+.MathJax_Display {
+  font-size: 24pt;
+}
