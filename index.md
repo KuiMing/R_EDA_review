@@ -9,6 +9,7 @@ hitheme     : zenburn
 widgets     : [quiz, bootstrap]           # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+copy_libraries: TRUE
 --- .dark .segue
 
 ## R basic
@@ -695,7 +696,7 @@ plot(pressure ~ temp, ubike)
 ---
 ## 列表觀察類別型數據
 <!-- html table generated in R 2.15.3 by xtable 1.7-1 package -->
-<!-- Sat May 16 22:07:03 2015 -->
+<!-- Mon May 18 03:45:50 2015 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 房價 </TH> <TH> 信義區 </TH> <TH> 大安區 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 25% </TD> <TD align="right"> 12.50 </TD> <TD align="right"> 14.80 </TD> </TR>

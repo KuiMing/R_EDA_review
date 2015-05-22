@@ -9,6 +9,7 @@ hitheme     : zenburn
 widgets     : [quiz, bootstrap]           # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+copy_libraries: TRUE
 --- .dark .segue
 
 ## R basic
