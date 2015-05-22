@@ -227,6 +227,15 @@ df[["v1"]]
 df$v1
 ```
 
+--- .largecontent
+## data.frame的取值
+- 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
+```{r}
+df[2, ] # select 2nd row
+df[df$v1 > 3 & z==TRUE, "v2"]
+```
+
+
 --- &radio
 ## 練習取值
 
@@ -249,13 +258,7 @@ df[3,2]
 df$v2[3]
 df[["v2"]][3]
 
---- .largecontent
-## data.frame的取值
-- 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
-```{r}
-df[2, ] # select 2nd row
-df[df$v1 > 3 & z==TRUE, "v2"]
-```
+
 
 --- .largecontent
 ## data.frame的合併

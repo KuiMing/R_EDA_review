@@ -396,6 +396,30 @@ df[["v1"]]
 ```
 
 
+--- .largecontent
+## data.frame的取值
+- 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
+
+```r
+df[2, ]  # select 2nd row
+```
+
+```
+##     v1   v2    v3
+## 2 2.11 book FALSE
+```
+
+```r
+df[df$v1 > 3 & z == TRUE, "v2"]
+```
+
+```
+## [1] apple cat  
+## Levels: apple book cat
+```
+
+
+
 --- &radio
 ## 練習取值
 
@@ -418,27 +442,6 @@ df[3,2]
 df$v2[3]
 df[["v2"]][3]
 
---- .largecontent
-## data.frame的取值
-- 可以用["欄位名稱"]，選擇特定欄位，也可以用 $  來提取物件的特定欄位，請試著在 df$ 之後按tab (自動完成鍵)。中括號中可以使用條件算子進行取值。
-
-```r
-df[2, ]  # select 2nd row
-```
-
-```
-##     v1   v2    v3
-## 2 2.11 book FALSE
-```
-
-```r
-df[df$v1 > 3 & z == TRUE, "v2"]
-```
-
-```
-## [1] apple cat  
-## Levels: apple book cat
-```
 
 
 --- .largecontent
@@ -696,7 +699,7 @@ plot(pressure ~ temp, ubike)
 ---
 ## 列表觀察類別型數據
 <!-- html table generated in R 2.15.3 by xtable 1.7-1 package -->
-<!-- Mon May 18 03:45:50 2015 -->
+<!-- Fri May 22 19:37:40 2015 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> 房價 </TH> <TH> 信義區 </TH> <TH> 大安區 </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> 25% </TD> <TD align="right"> 12.50 </TD> <TD align="right"> 14.80 </TD> </TR>
